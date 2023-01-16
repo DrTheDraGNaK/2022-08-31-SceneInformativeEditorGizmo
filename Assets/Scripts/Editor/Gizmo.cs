@@ -13,6 +13,8 @@ namespace technical.test.editor
         {
             Name = name;
             Position = position;
+
+
         }
     }
 
