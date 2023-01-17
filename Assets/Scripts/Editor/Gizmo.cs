@@ -1,5 +1,7 @@
 ﻿using System;
+using UnityEditor;
 using UnityEngine;
+
 
 namespace technical.test.editor
 {
@@ -13,9 +15,9 @@ namespace technical.test.editor
         {
             Name = name;
             Position = position;
+        }        
 
+    }    
 
-        }
-    }
 
 }

@@ -1,19 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using technical.test.editor;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.Networking.Types;
-using UnityEngine.Rendering;
-using UnityEngine.UIElements;
+
 
 public class WindowShowGizmo : EditorWindow
 {
     public SceneGizmoAsset scriptable;
 
     bool buttonDown = false;
-    
 
+    int actualButton;
     
 
     [MenuItem("Window/Custom/Show Gizmos")]
@@ -23,6 +19,12 @@ public class WindowShowGizmo : EditorWindow
 
         window.titleContent = new GUIContent("Gizmos Editor");
         window.Show();
+    }
+    private void Awake()
+    {
+        buttonDown = false;
+        actualButton = -1;
+
     }
     private void OnGUI()
     {
@@ -36,47 +38,61 @@ public class WindowShowGizmo : EditorWindow
             for (int i = 0; i < scriptable.Gizmos.Length; i++)
             {
                 Gizmo newG = scriptable.Gizmos[i];
-                DrawRow(ref newG);
+                DrawRow(ref newG, i);
                 scriptable.Gizmos[i] = newG;
-
                 
             }
+
         }
         
     }
-
-    void DrawRow(ref Gizmo gizmo)
+    void DrawRow(ref Gizmo gizmo, int id)
     {
         
+        GUI.backgroundColor = Color.white;
         GUILayout.BeginHorizontal("box");
-        gizmo.Name = EditorGUILayout.TextField(gizmo.Name);
-        gizmo.Position = EditorGUILayout.Vector3Field("", gizmo.Position);
+        if(actualButton == id && buttonDown == true)
+        {
+            GUI.backgroundColor = Color.red;
+            gizmo.Name = EditorGUILayout.TextField(gizmo.Name);
+            gizmo.Position = EditorGUILayout.Vector3Field("", gizmo.Position);
+        }
+        else
+        {
+            EditorGUILayout.TextField(gizmo.Name);
+            EditorGUILayout.Vector3Field("", gizmo.Position);
+
+        }
         if (GUILayout.Button("Edit"))
         {
             if(buttonDown == false)
             {
-                CanInteract();
+                CanInteract(id);
             }
             else
-            {
-                StopInteract();
+            {                
+                StopInteract(id);
             }
         }
         GUILayout.EndHorizontal();
 
         
     }
-
-    public void CanInteract()
+    
+    public void CanInteract(int gizmoID)
     {
-        //you can edit the gizmo
+        actualButton = gizmoID;
         Debug.Log("Je peux interagir avec le gizmo");
         buttonDown = true;
     }
-    public void StopInteract()
+    public void StopInteract(int gizmoID)
     {
-        //stop editing the gizmo
-        Debug.Log("Je stop les interactions avec le gizmo");
-        buttonDown = false;
+        if(actualButton == gizmoID)
+        {
+            Debug.Log("Je stop les interactions avec le gizmo");
+            buttonDown = false;
+            actualButton = -1;
+        }
+        
     }
 }
