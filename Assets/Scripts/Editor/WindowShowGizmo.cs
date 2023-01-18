@@ -40,8 +40,7 @@ public class WindowShowGizmo : EditorWindow
                 if (scriptable.Gizmos[i].isEditing)
                 {
                     Handles.DoPositionHandle(scriptable.Gizmos[i].Position, Quaternion.identity);
-                    Handles.Label(scriptable.Gizmos[i].Position + Vector3.up * 2,
-            scriptable.Gizmos[i].Position.ToString() + scriptable.Gizmos[i].Name);
+                    
                 }
                 Handles.SphereHandleCap(
               0,
@@ -50,6 +49,10 @@ public class WindowShowGizmo : EditorWindow
                   1,
                   EventType.Repaint
               );
+                GUIStyle style = new GUIStyle();
+                style.normal.textColor = Color.black;
+                Handles.Label(scriptable.Gizmos[i].Position + Vector3.up * 1,
+            scriptable.Gizmos[i].Position.ToString() + scriptable.Gizmos[i].Name, style);
             }          
 
 
