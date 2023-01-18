@@ -9,6 +9,9 @@ public class WindowShowGizmo : EditorWindow
 {
     public SceneGizmoAsset scriptable;
 
+    float thickness = 0f;
+
+
     [MenuItem("Window/Custom/Show Gizmos")]
     static void InitWindow()
     {
@@ -41,7 +44,10 @@ public class WindowShowGizmo : EditorWindow
                 {
                     Handles.DoPositionHandle(scriptable.Gizmos[i].Position, Quaternion.identity);
                     
+
+
                 }
+                Handles.color = Color.white;
                 Handles.SphereHandleCap(
               0,
                   scriptable.Gizmos[i].Position,
@@ -51,12 +57,13 @@ public class WindowShowGizmo : EditorWindow
               );
                 GUIStyle style = new GUIStyle();
                 style.normal.textColor = Color.black;
-                Handles.Label(scriptable.Gizmos[i].Position + Vector3.up * 1,
-            scriptable.Gizmos[i].Position.ToString() + scriptable.Gizmos[i].Name, style);
-            }          
+                Handles.color = Color.black;
+                Handles.Label(scriptable.Gizmos[i].Position + Vector3.up * 1, scriptable.Gizmos[i].Name, style);
 
-
-         
+                Handles.DrawLine(scriptable.Gizmos[i].Position, scriptable.Gizmos[i].Position + Vector3.up * 1, thickness);
+                
+            }   
+                    
             
             SceneView.lastActiveSceneView.Repaint();
         }
