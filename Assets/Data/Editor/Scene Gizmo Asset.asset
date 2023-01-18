@@ -15,16 +15,16 @@ MonoBehaviour:
   _gizmos:
   - isEditing: 0
     Name: Spawn
-    Position: {x: -0.17, y: 1.28, z: 0.11}
+    Position: {x: 0, y: 0, z: 0}
   - isEditing: 0
     Name: End Level
-    Position: {x: -15, y: 2, z: -1}
+    Position: {x: -4.09, y: 1.35, z: 0}
   - isEditing: 0
     Name: First Fight
-    Position: {x: -6.425, y: 1, z: -0.3}
+    Position: {x: -7.53, y: 1.27, z: 0}
   - isEditing: 0
     Name: PNJ to help
-    Position: {x: -10.06, y: 2, z: -0.53}
+    Position: {x: -10.12, y: 2.06, z: 0}
   - isEditing: 0
     Name: Boss Arena
-    Position: {x: -13.68, y: 1.921, z: -1}
+    Position: {x: -15.65, y: 2.18, z: 0}

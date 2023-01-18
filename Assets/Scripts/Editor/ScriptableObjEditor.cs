@@ -14,8 +14,6 @@ public class ScriptableObjEditor : Editor
     }
     public override void OnInspectorGUI()
     {
-        //base.OnInspectorGUI();
-
         if (GUILayout.Button("Open Gizmos Editor Window"))
         {
             WindowShowGizmo window = (WindowShowGizmo)EditorWindow.GetWindow(typeof(WindowShowGizmo));

@@ -12,11 +12,6 @@ public class WindowShowGizmo : EditorWindow
 
     float thickness = 0f;
 
-    bool tttttt = false;
-    bool yyyyyy = false;
-
-    
-
     [MenuItem("Window/Custom/Show Gizmos")]
     static void InitWindow()
     {
@@ -25,8 +20,6 @@ public class WindowShowGizmo : EditorWindow
         window.titleContent = new GUIContent("Gizmos Editor");
         window.Show();
     }
-
-
 
     void OnEnable()
     {
@@ -40,7 +33,6 @@ public class WindowShowGizmo : EditorWindow
 
     void OnSceneGUI(SceneView sceneView)
     {
-        
 
         if (SceneView.lastActiveSceneView != null)
         {
@@ -51,28 +43,19 @@ public class WindowShowGizmo : EditorWindow
                 {
                     Handles.DoPositionHandle(scriptable.Gizmos[i].Position, Quaternion.identity);
 
-                    Event currentEvent = Event.current;
-                    Rect contextRect = new Rect(scriptable.Gizmos[i].Position.x, scriptable.Gizmos[i].Position.y, 1000, 1000);
-                    EditorGUI.DrawRect(contextRect, Color.green);
-
                     if (Event.current.button == 1)
                     {
                         if (Event.current.type == EventType.MouseDown)
                         {
                             GenericMenu menu = new GenericMenu();
-                            menu.AddItem(new GUIContent("Reset Position"), false, Callback, "ceci est le 1");
+                            menu.AddItem(new GUIContent("Reset Position"), false, Callback, "1");
                             menu.AddItem(new GUIContent("Delete Gizmo"), false, Callback, "2");
+
+                            
                             menu.ShowAsContext();
                         }
-                    }
-                    if (tttttt == true)
-                    {
-                        scriptable.Gizmos[i].Position = new Vector3(0, 0, 0);
-                    }
-
-                }
-
-                
+                    }       
+                }                
                 Handles.color = Color.white;
                 Handles.SphereHandleCap(
               0,
@@ -87,27 +70,19 @@ public class WindowShowGizmo : EditorWindow
                 Handles.Label(scriptable.Gizmos[i].Position + Vector3.up * 1, scriptable.Gizmos[i].Name, style);
 
                 Handles.DrawLine(scriptable.Gizmos[i].Position, scriptable.Gizmos[i].Position + Vector3.up * 1, thickness);
-                
-            }
-
-            
-
-
+            }          
             SceneView.lastActiveSceneView.Repaint();
         }
     }
 
     void Callback(object obj)
     {
-        if (obj.ToString() == "ceci est le 1")
+        if (obj.ToString() == "1")
         {
-            tttttt = true;
         }
         if (obj.ToString() == "2")
         {
-            yyyyyy = true;
         }
-        
     }
 
     private void OnGUI()
@@ -138,25 +113,17 @@ public class WindowShowGizmo : EditorWindow
 
     void DrawRow(ref Gizmo gizmo, int id)
     {
-
         GUI.backgroundColor = Color.white;
         GUILayout.BeginHorizontal("box");
-
         EditorGUI.BeginDisabledGroup(!gizmo.isEditing);
         GUI.backgroundColor = gizmo.isEditing ? Color.red : Color.white;
-
         gizmo.Name = EditorGUILayout.TextField(gizmo.Name);
         gizmo.Position = EditorGUILayout.Vector3Field("", gizmo.Position);
-
-
         EditorGUI.EndDisabledGroup();
-
         if (GUILayout.Button("Edit"))
         {
             gizmo.isEditing = !gizmo.isEditing;
         }
         GUILayout.EndHorizontal();
-
-
     }
 }
