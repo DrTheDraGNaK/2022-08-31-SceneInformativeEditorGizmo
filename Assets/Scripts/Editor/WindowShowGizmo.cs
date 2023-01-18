@@ -1,3 +1,4 @@
+using System;
 using System.Security.Cryptography;
 using technical.test.editor;
 using UnityEditor;
@@ -79,9 +80,26 @@ public class WindowShowGizmo : EditorWindow
     {
         if (obj.ToString() == "1")
         {
+            for (int i = 0; i < scriptable.Gizmos.Length; i++)
+            {
+                if (scriptable.Gizmos[i].isEditing)
+                {
+                    scriptable.Gizmos[i].Position = new Vector3(0, 0, 0);
+
+                }
+            }
         }
         if (obj.ToString() == "2")
         {
+            for (int i = 0; i < scriptable.Gizmos.Length; i++)
+            {
+                if (scriptable.Gizmos[i].isEditing)
+                {
+                    
+                    //delete the gizmo
+                }
+            }
+
         }
     }
 
