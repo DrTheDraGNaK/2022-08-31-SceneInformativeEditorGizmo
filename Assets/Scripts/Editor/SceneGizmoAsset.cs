@@ -15,7 +15,6 @@ namespace technical.test.editor
             return "Gizmo count : " + _gizmos.Length;
         }
 
-        
     }
 
 }

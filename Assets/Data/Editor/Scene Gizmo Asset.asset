@@ -13,13 +13,18 @@ MonoBehaviour:
   m_Name: Scene Gizmo Asset
   m_EditorClassIdentifier: 
   _gizmos:
-  - Name: Spawn
-    Position: {x: 0, y: 1, z: 0}
-  - Name: End Level
+  - isEditing: 0
+    Name: Spawn
+    Position: {x: -0.17, y: 1.28, z: 0.11}
+  - isEditing: 0
+    Name: End Level
     Position: {x: -15, y: 2, z: -1}
-  - Name: First Fight
+  - isEditing: 0
+    Name: First Fight
     Position: {x: -6.425, y: 1, z: -0.3}
-  - Name: PNJ to help
+  - isEditing: 0
+    Name: PNJ to help
     Position: {x: -10.06, y: 2, z: -0.53}
-  - Name: Boss Arena
+  - isEditing: 0
+    Name: Boss Arena
     Position: {x: -13.68, y: 1.921, z: -1}

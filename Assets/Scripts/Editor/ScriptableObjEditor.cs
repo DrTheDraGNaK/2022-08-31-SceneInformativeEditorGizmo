@@ -14,7 +14,7 @@ public class ScriptableObjEditor : Editor
     }
     public override void OnInspectorGUI()
     {
-        base.OnInspectorGUI();
+        //base.OnInspectorGUI();
 
         if (GUILayout.Button("Open Gizmos Editor Window"))
         {
@@ -24,8 +24,5 @@ public class ScriptableObjEditor : Editor
             window.Show();
         }
 
-        
-
     }
-
 }
